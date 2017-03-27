@@ -30,7 +30,17 @@ class Diretorio implements DiretorioInterface
 
     public function cadastrarArquivo($arquivo)
     {
-    	// criar código
+    	if($arquivo["type"]=="image/png"){
+            $nome_arquivo = $arquivo['name'];
+            move_uploaded_file($arquivo["tmp_name"], "../uploads/" . $nome_arquivo);
+            return true;
+        }else if($arquivo["type"]=="image/jpeg"){
+            $nome_arquivo = $arquivo['name'];
+            move_uploaded_file($arquivo["tmp_name"], "../uploads/" . $nome_arquivo);
+            return true;
+        }
+
+        return false;
     }
 }
 
